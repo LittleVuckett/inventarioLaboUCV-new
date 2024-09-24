@@ -9,7 +9,7 @@
                 <div class="col-auto mt-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-folder"></i></div>
-                        Edit Unit
+                        Editar Ambiente
                     </h1>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <!-- Form Group (name) -->
                         <div class="mb-3">
-                            <label class="small mb-1" for="name">Unit Name <span class="text-danger">*</span></label>
+                            <label class="small mb-1" for="name">Nombre de Ambiente<span class="text-danger">*</span></label>
                             <input class="form-control form-control-solid @error('name') is-invalid @enderror" id="name" name="name" type="text" placeholder="" value="{{ old('name', $unit->name) }}" autocomplete="off" />
                             @error('name')
                             <div class="invalid-feedback">
@@ -44,7 +44,7 @@
                         </div>
                         <!-- Form Group (slug) -->
                         <div class="mb-3">
-                            <label class="small mb-1" for="slug">Unit Slug (non editable).</label>
+                            <label class="small mb-1" for="slug">cod Ambiente</label>
                             <input class="form-control form-control-solid @error('slug') is-invalid @enderror" id="slug" name="slug" type="text" placeholder="" value="{{ old('slug', $unit->slug) }}" readonly />
                             @error('slug')
                             <div class="invalid-feedback">
@@ -54,8 +54,8 @@
                         </div>
 
                         <!-- Submit button -->
-                        <button class="btn btn-primary" type="submit">Update</button>
-                        <a class="btn btn-danger" href="{{ route('units.index') }}">Cancel</a>
+                        <button class="btn btn-primary" type="submit">Actualizar</button>
+                        <a class="btn btn-danger" href="{{ route('units.index') }}">Cancelar</a>
                     </div>
                 </div>
                 <!-- END: Unit Details -->

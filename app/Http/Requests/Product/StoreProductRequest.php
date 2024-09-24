@@ -20,18 +20,28 @@ class StoreProductRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    public function rules(): array
-    {
-        return [
-            'product_image' => 'image|file|max:2048',
-            'product_name' => 'required|string',
-            'category_id' => 'required|integer',
-            'unit_id' => 'required|integer',
-            'stock' => 'required|integer',
-            'buying_price' => 'required|integer',
-            'selling_price' => 'required|integer',
-        ];
-    }
+public function rules(): array
+{
+    return [
+        'product_image' => 'image|file|max:2048',
+        'product_name' => 'required|string',
+        'category_id' => 'required|integer',
+        'unit_id' => 'required|integer',
+        'stock' => 'required|integer',
+        'buying_price' => 'required|integer',
+        'selling_price' => 'required|integer',
+        // Add new validation rules for the new fields
+        'serial_number' => 'nullable|string|max:255',
+        'make_or_brand' => 'nullable|string|max:255',
+        'ram' => 'nullable|integer',
+        'storage_capacity' => 'nullable|integer',
+        'gpu' => 'nullable|string|max:255',
+        'is_obsolete' => 'required|boolean',
+        'is_written_off' => 'required|boolean',
+        'comments' => 'nullable|string|max:1000',
+	'codInventarioUCV' => 'nullable|string|max:255',
+    ];
+}
 
     protected function prepareForValidation()
     {
@@ -40,7 +50,7 @@ class StoreProductRequest extends FormRequest
                 'table' => 'products',
                 'field' => 'product_code',
                 'length' => 4,
-                'prefix' => 'PC'
+                'prefix' => 'TR'
             ])
         ]);
 

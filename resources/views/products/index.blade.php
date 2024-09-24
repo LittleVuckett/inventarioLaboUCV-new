@@ -13,14 +13,14 @@
                 <div class="col-auto my-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
-                        Product List
+                        Listado de Elementos
                     </h1>
                 </div>
                 <div class="col-auto my-4">
-                    <a href="{{ route('products.import') }}" class="btn btn-success add-list my-1"><i class="fa-solid fa-file-import me-3"></i>Import</a>
-                    <a href="{{ route('products.export') }}" class="btn btn-warning add-list my-1"><i class="fa-solid fa-file-arrow-down me-3"></i>Export</a>
-                    <a href="{{ route('products.create') }}" class="btn btn-primary add-list my-1"><i class="fa-solid fa-plus me-3"></i>Add</a>
-                    <a href="{{ route('products.index') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
+                    <a href="{{ route('products.import') }}" class="btn btn-success add-list my-1"><i class="fa-solid fa-file-import me-3"></i>Importar de Excel</a>
+                    <a href="{{ route('products.export') }}" class="btn btn-warning add-list my-1"><i class="fa-solid fa-file-arrow-down me-3"></i>Exportar a Excel</a>
+                    <a href="{{ route('products.create') }}" class="btn btn-primary add-list my-1"><i class="fa-solid fa-plus me-3"></i>Agregar</a>
+                    <a href="{{ route('products.index') }}" class="btn btn-danger add-list my-1"><i class="fa-solid fa-trash me-3"></i>Quitar Búsqueda</a>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
                     <form action="{{ route('products.index') }}" method="GET">
                         <div class="d-flex flex-wrap align-items-center justify-content-between">
                             <div class="form-group row align-items-center">
-                                <label for="row" class="col-auto">Row:</label>
+                                <label for="row" class="col-auto">Cantidad de Filas:</label>
                                 <div class="col-auto">
                                     <select class="form-control" name="row">
                                         <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
@@ -51,10 +51,10 @@
                             </div>
 
                             <div class="form-group row align-items-center justify-content-between">
-                                <label class="control-label col-sm-3" for="search">Search:</label>
+                                <label class="control-label col-sm-3" for="search">Búsqueda:</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input type="text" id="search" class="form-control me-1" name="search" placeholder="Search product" value="{{ request('search') }}">
+                                        <input type="text" id="search" class="form-control me-1" name="search" placeholder="Búscar Elemento" value="{{ request('search') }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20 text-white"></i></button>
                                         </div>
@@ -72,14 +72,23 @@
                         <table class="table table-striped align-middle">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">No.</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">@sortablelink('product_name', 'Product Name')</th>
-                                    <th scope="col">@sortablelink('category.name', 'category')</th>
-                                    <th scope="col">@sortablelink('stock')</th>
-                                    <th scope="col">@sortablelink('unit.name', 'unit')</th>
-                                    <th scope="col">@sortablelink('selling_price', 'Price')</th>
-                                    <th scope="col">Action</th>
+<th scope="col">No.</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">@sortablelink('product_name', 'Nombre de Elemento')</th>
+                            <th scope="col">@sortablelink('category.name', 'Categoría')</th>
+                            <th scope="col">@sortablelink('stock', 'Cantidad')</th>
+                            <th scope="col">@sortablelink('unit.name', 'Ambiente')</th>
+                            <th scope="col">@sortablelink('selling_price', 'Valor Actual')</th>
+                           
+                            <th scope="col">Número de Serie</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">RAM</th>
+                            <th scope="col">Capacidad de Almacenamiento</th>
+                            <th scope="col">GPU</th>
+                            <th scope="col">Obsoleto?</th>
+
+                            <th scope="col">De Baja?</th>
+                            <th scope="col">Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,7 +105,14 @@
                                     <td>{{ $product->stock }}</td>
                                     <td>{{ $product->unit->name }}</td>
                                     <td>{{ $product->selling_price }}</td>
-                                    <td>
+					<td>{{ $product->serial_number }}</td>
+                            <td>{{ $product->make_or_brand }}</td>
+                            <td>{{ $product->ram }}GB</td>
+                            <td>{{ $product->storage_capacity }}GB</td>
+                            <td>{{ $product->gpu }}</td>
+                            <td>{{ $product->is_obsolete ? 'Sí' : 'No' }}</td>
+                            <td>{{ $product->is_written_off ? 'Sí' : 'No' }}</td>
+		<td>                           
                                         <div class="d-flex">
                                             <a href="{{ route('products.show', $product->id) }}" class="btn btn-outline-success btn-sm mx-1"><i class="fa-solid fa-eye"></i></a>
                                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-outline-primary btn-sm mx-1"><i class="fas fa-edit"></i></a>

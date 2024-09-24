@@ -9,7 +9,7 @@
                 <div class="col-auto mt-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-users"></i></div>
-                        Edit User
+                        Editar  Usuario
                     </h1>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                         <!-- Profile picture image -->
                         <img class="img-account-profile rounded-circle mb-2" src="{{ $user->photo ? asset('storage/profile/'.$user->photo) : asset('assets/img/demo/user-placeholder.svg') }}" alt="" id="image-preview" />
                         <!-- Profile picture help block -->
-                        <div class="small font-italic text-muted mb-2">JPG or PNG no larger than 1 MB</div>
+                        <div class="small font-italic text-muted mb-2">JPG o PNG < 1 MB</div>
                         <!-- Profile picture input -->
                         <input class="form-control form-control-solid mb-2 @error('photo') is-invalid @enderror" type="file"  id="image" name="photo" accept="image/*" onchange="previewImage();">
                         @error('photo')
@@ -48,12 +48,12 @@
                 <!-- BEGIN: User Details -->
                 <div class="card mb-4">
                     <div class="card-header">
-                        User Details
+                        Detalles del Usuario
                     </div>
                     <div class="card-body">
                         <!-- Form Group (name) -->
                         <div class="mb-3">
-                            <label class="small mb-1" for="name">Name <span class="text-danger">*</span></label>
+                            <label class="small mb-1" for="name">Nombre <span class="text-danger">*</span></label>
                             <input class="form-control form-control-solid @error('name') is-invalid @enderror" id="name" name="name" type="text" placeholder="" value="{{ old('name', $user->name) }}" />
                             @error('name')
                             <div class="invalid-feedback">
@@ -63,7 +63,7 @@
                         </div>
                         <!-- Form Group (email address) -->
                         <div class="mb-3">
-                            <label class="small mb-1" for="email">Email address <span class="text-danger">*</span></label>
+                            <label class="small mb-1" for="email">Email <span class="text-danger">*</span></label>
                             <input class="form-control form-control-solid @error('email') is-invalid @enderror" id="email" name="email" type="text" placeholder="" value="{{ old('email', $user->email) }}" />
                             @error('email')
                             <div class="invalid-feedback">
@@ -73,7 +73,7 @@
                         </div>
                         <!-- Form Group (username) -->
                         <div class="mb-3">
-                            <label class="small mb-1" for="username">Username <span class="text-danger">*</span></label>
+                            <label class="small mb-1" for="username">Usuario<span class="text-danger">*</span></label>
                             <input class="form-control form-control-solid @error('username') is-invalid @enderror" id="username" name="username" type="text" placeholder="" value="{{ old('username', $user->username) }}" />
                             @error('username')
                             <div class="invalid-feedback">
@@ -83,8 +83,8 @@
                         </div>
 
                         <!-- Submit button -->
-                        <button class="btn btn-primary" type="submit">Save</button>
-                        <a class="btn btn-danger" href="{{ route('users.index') }}">Cancel</a>
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                        <a class="btn btn-danger" href="{{ route('users.index') }}">Cancelar</a>
                     </div>
                 </div>
                 <!-- END: User Details -->
@@ -101,14 +101,14 @@
                 <!-- BEGIN: Change Password -->
                 <div class="card mb-4">
                     <div class="card-header">
-                        Change Password
+                        Cambiar Contraseña
                     </div>
                     <div class="card-body">
                         <!-- Form Row -->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (password) -->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="password">Password</label>
+                                <label class="small mb-1" for="password">Contraseña</label>
                                 <input class="form-control form-control-solid @error('password') is-invalid @enderror" id="password" name="password" type="password"/>
                                 @error('password')
                                 <div class="invalid-feedback">
@@ -118,7 +118,7 @@
                             </div>
                             <!-- Form Group (password confirmation) -->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="password_confirmation">Password confirmation</label>
+                                <label class="small mb-1" for="password_confirmation">Confirmar Contraseña</label>
                                 <input class="form-control form-control-solid @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" type="password"/>
                                 @error('password_confirmation')
                                 <div class="invalid-feedback">
@@ -129,8 +129,8 @@
                         </div>
 
                         <!-- Submit button -->
-                        <button class="btn btn-primary" type="submit"  onclick="return confirm('Do you want to change the password?')">Save</button>
-                        <a class="btn btn-danger" href="{{ route('users.index') }}">Cancel</a>
+                        <button class="btn btn-primary" type="submit"  onclick="return confirm('¿Desea cambiar la contra?')">Save</button>
+                        <a class="btn btn-danger" href="{{ route('users.index') }}">Cancelar</a>
                     </div>
                 </div>
                 <!-- END: Change Password -->

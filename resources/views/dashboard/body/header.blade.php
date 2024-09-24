@@ -6,12 +6,12 @@
     <!-- * * Tip * * You can use text or an image for your navbar brand.-->
     <!-- * * * * * * When using an image, we recommend the SVG format.-->
     <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
-    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="{{ route('dashboard') }}">Inventory</a>
+    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="{{ route('products.index')  }}">Inventario</a>
     <!-- Navbar Search Input-->
     <!-- * * Note: * * Visible only on and above the lg breakpoint-->
     <form class="form-inline me-auto d-none d-lg-block me-3">
         <div class="input-group input-group-joined input-group-solid">
-            <input class="form-control pe-0" type="search" placeholder="Search" aria-label="Search" />
+            <input class="form-control pe-0" type="search" placeholder="Búsqueda" aria-label="Búsqueda" />
             <div class="input-group-text"><i data-feather="search"></i></div>
         </div>
     </form>
@@ -32,7 +32,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('profile.edit') }}">
                     <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                    Account
+                    Cuenta
                 </a>
 
                 <!-- Logout -->
@@ -40,7 +40,7 @@
                     @csrf
                     <button class="dropdown-item" action="{{ route('logout') }}" method="POST" onclick="return confirm('Are you sure you want to logout?')">
                         <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                        Logout
+                        Cerrar Sesión
                     </button>
                 </form>
             </div>

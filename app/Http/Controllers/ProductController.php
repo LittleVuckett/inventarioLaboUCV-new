@@ -212,37 +212,55 @@ class ProductController extends Controller
     /**
      * Handle export data products.
      */
-    function export(){
-        $products = Product::all()->sortBy('product_name');
+function export(){
+    $products = Product::all()->sortBy('product_name');
 
-        $product_array [] = array(
-            'Product Name',
-            'Category Id',
-            'Unit Id',
-            'Product Code',
-            'Stock',
-            'Buying Price',
-            'Selling Price',
-            'Product Image',
+    $product_array [] = array(
+        'Nombre del Elemento',
+        'ID de Categoría',
+        'ID de Unidad',
+        'Código del Producto',
+        'Cantidad',
+        'Precio de Compra',
+        'Precio de Venta',
+        'Imagen del Producto',
+        // Translated New Headers
+        'Número de Serie',
+        'Marca',
+        'RAM',
+        'Capacidad de Almacenamiento',
+        'GPU',
+        '¿Obsoleto?',
+        '¿De Baja?',
+        'Comentarios',
+        'Cod. Inventario UCV',
+    );
+
+    foreach($products as $product) {
+        $product_array[] = array(
+            'Nombre del Elemento' => $product->product_name,
+            'ID de Categoría' => $product->category_id,
+            'ID de Unidad' => $product->unit_id,
+            'Código del Producto' => $product->product_code,
+            'Cantidad' => $product->stock,
+            'Precio de Compra' => $product->buying_price,
+            'Precio de Venta' => $product->selling_price,
+            'Imagen del Producto' => $product->product_image,
+            // Data for New Fields
+            'Número de Serie' => $product->serial_number,
+            'Marca' => $product->make_or_brand,
+            'RAM' => $product->ram,
+            'Capacidad de Almacenamiento' => $product->storage_capacity,
+            'GPU' => $product->gpu,
+            '¿Obsoleto?' => $product->is_obsolete ? 'Sí' : 'No',
+            '¿De Baja?' => $product->is_written_off ? 'Sí' : 'No',
+            'Comentarios' => $product->comments,
+            'Cod. Inventario UCV' => $product->codInventarioUCV,
         );
-
-        foreach($products as $product)
-        {
-            $product_array[] = array(
-                'Product Name' => $product->product_name,
-                'Category Id' => $product->category_id,
-                'Unit Id' => $product->unit_id,
-                'Product Code' => $product->product_code,
-                'Stock' => $product->stock,
-                'Buying Price' =>$product->buying_price,
-                'Selling Price' =>$product->selling_price,
-                'Product Image' => $product->product_image,
-            );
-        }
-
-        $this->exportExcel($product_array);
     }
 
+    $this->exportExcel($product_array);
+}
     /**
      *This function loads the customer data from the database then converts it
      * into an Array that will be exported to Excel
@@ -257,7 +275,7 @@ class ProductController extends Controller
             $spreadSheet->getActiveSheet()->fromArray($products);
             $Excel_writer = new Xls($spreadSheet);
             header('Content-Type: application/vnd.ms-excel');
-            header('Content-Disposition: attachment;filename="products.xls"');
+            header('Content-Disposition: attachment;filename="InventarioExportado.xls"');
             header('Cache-Control: max-age=0');
             ob_end_clean();
             $Excel_writer->save('php://output');

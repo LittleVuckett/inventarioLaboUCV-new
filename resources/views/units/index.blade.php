@@ -9,12 +9,12 @@
                 <div class="col-auto mt-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-folder"></i></div>
-                        Unit List
+                        Listado de Ambientes
                     </h1>
                 </div>
                 <div class="col-auto my-4">
-                    <a href="{{ route('units.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus me-3"></i>Add</a>
-                    <a href="{{ route('units.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash me-3"></i>Clear Search</a>
+                    <a href="{{ route('units.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus me-3"></i>Agregar</a>
+                    <a href="{{ route('units.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash me-3"></i>Borrar Búsqueda</a>
                 </div>
             </div>
 
@@ -34,7 +34,7 @@
                     <form action="{{ route('units.index') }}" method="GET">
                         <div class="d-flex flex-wrap align-items-center justify-content-between">
                             <div class="form-group row align-items-center">
-                                <label for="row" class="col-auto">Row:</label>
+                                <label for="row" class="col-auto">Filas:</label>
                                 <div class="col-auto">
                                     <label>
                                         <select class="form-control" name="row">
@@ -48,10 +48,10 @@
                             </div>
 
                             <div class="form-group row align-items-center justify-content-between">
-                                <label class="control-label col-sm-3" for="search">Search:</label>
+                                <label class="control-label col-sm-3" for="search">Búsqueda:</label>
                                 <div class="col-sm-8">
                                     <div class="input-group">
-                                        <input type="text" id="search" class="form-control me-1" name="search" placeholder="Search unit" value="{{ request('search') }}">
+                                        <input type="text" id="search" class="form-control me-1" name="search" placeholder="Búsqueda de Ambientes" value="{{ request('search') }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20 text-white"></i></button>
                                         </div>
@@ -70,8 +70,8 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">No.</th>
-                                    <th scope="col">@sortablelink('name', 'Unit Name')</th>
-                                    <th scope="col">@sortablelink('slug', 'Unit Slug')</th>
+                                    <th scope="col">@sortablelink('name', 'Nombre')</th>
+                                    <th scope="col">@sortablelink('slug', 'Cod')</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -87,7 +87,7 @@
                                             <form action="{{ route('units.destroy', $unit->slug) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?')">
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro que desea borrar?')">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
                                             </form>

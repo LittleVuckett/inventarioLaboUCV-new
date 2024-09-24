@@ -10,27 +10,44 @@ class Product extends Model
 {
     use HasFactory, Sortable;
 
-    protected $fillable = [
-        'product_name',
-        'category_id',
-        'unit_id',
-        'product_code',
-        'stock',
-        'buying_price',
-        'selling_price',
-        'product_image',
-    ];
+protected $fillable = [
+    'product_name',
+    'category_id',
+    'unit_id',
+    'product_code',
+    'stock',
+    'buying_price',
+    'selling_price',
+    'product_image',
+    // New fields
+    'serial_number',
+    'make_or_brand',
+    'ram',
+    'storage_capacity',
+    'gpu',
+    'is_obsolete',
+    'is_written_off',
+    'codInventarioUCV',
+    'comments',
 
-    public $sortable = [
-        'product_name',
-        'category_id',
-        'unit_id',
-        'product_code',
-        'stock',
-        'buying_price',
-        'selling_price',
-    ];
+];
 
+public $sortable = [
+    'product_name',
+    'category_id',
+    'unit_id',
+    'product_code',
+    'stock',
+    'buying_price',
+    'selling_price',
+    // You might also want to make the new fields sortable
+    'serial_number',
+    'make_or_brand',
+    'ram',
+    'storage_capacity',
+    'gpu',
+    // Note: Boolean fields like 'is_obsolete' and 'is_written_off' might not need to be sortable depending on your use case
+];
     protected $guarded = [
         'id',
     ];

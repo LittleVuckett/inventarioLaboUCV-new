@@ -9,7 +9,7 @@
                 <div class="col-auto mt-4">
                     <h1 class="page-header-title">
                         <div class="page-header-icon"><i class="fa-solid fa-folder"></i></div>
-                        Add Unit
+                        Agregar Ambiente
                     </h1>
                 </div>
             </div>
@@ -28,12 +28,12 @@
                 <!-- BEGIN: Unit Details -->
                 <div class="card mb-4">
                     <div class="card-header">
-                        Unit Details
+                       Detalle de Ambiente
                     </div>
                     <div class="card-body">
                         <!-- Form Group (name) -->
                         <div class="mb-3">
-                            <label class="small mb-1" for="name">Unit Name <span class="text-danger">*</span></label>
+                            <label class="small mb-1" for="name">Nombre <span class="text-danger">*</span></label>
                             <input class="form-control form-control-solid @error('name') is-invalid @enderror" id="name" name="name" type="text" placeholder="" value="{{ old('name') }}" autocomplete="off" />
                             @error('name')
                             <div class="invalid-feedback">
@@ -43,7 +43,7 @@
                         </div>
                         <!-- Form Group (slug) -->
                         <div class="mb-3">
-                            <label class="small mb-1" for="slug">Unit Slug (non editable).</label>
+                            <label class="small mb-1" for="slug">cod Ambiente (no se puede editar).</label>
                             <input class="form-control form-control-solid @error('slug') is-invalid @enderror" id="slug" name="slug" type="text" placeholder="" value="{{ old('slug') }}" readonly />
                             @error('slug')
                             <div class="invalid-feedback">
